@@ -8,7 +8,10 @@
     "start": "next start",
     "start-server": "json-server --watch src/server/db.json --routes src/server/routes.json --middlewares src/server/middleware/conversations.js --port 3005",
     "test": "jest",
-    "lint": "next lint --no-error-on-unmatched-pattern"
+    "lint": "npm run lint:ts && npm run lint:js",
+    "lint:ts": "tsc",
+    "lint:js": "eslint . --max-warnings=0 --ext .js,.ts,.tsx --cache --cache-location=node_modules/.cache/",
+    "prettify": "eslint --fix \"./**/*.{js,ts,tsx}\""
   },
   "engines": {
     "node": ">=14.17.2"
@@ -28,6 +31,10 @@
     "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "json-server": "^0.16.3",
