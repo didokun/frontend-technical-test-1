@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React, { FunctionComponent } from 'react';
 
+import Svg from '../shared/Svg';
+
 
 type LayoutProps = {
   title: string;
@@ -19,7 +21,7 @@ const Layout: FunctionComponent<LayoutProps> = ({children, title, onlyHeader = f
           <div className="relative flex items-center justify-between h-16">
             <div className="flex-1 flex items-center justify-center divide-x divide-orange-600">
               <div className="flex-shrink-0 flex items-center">
-                <Image src="/images/logo.svg" height={30} width={160} alt="Leboncoin" />
+                <Svg src="/images/logo.svg" />
               </div>
               <div className="flex ml-5">
                 <span className="text-orange-600 px-3 py-2 text-lg font-semibold">{title}</span>

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { VoidFunctionComponent } from 'react';
 
+import Svg from '../shared/Svg';
+
 const ProfileInformation: VoidFunctionComponent = () => {
   return (<>
     <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
@@ -24,7 +26,7 @@ const ProfileInformation: VoidFunctionComponent = () => {
       <div className="flex items-center space-x-2">
         <Link href="/messages" passHref>
           <div className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none cursor-pointer sm:mr-0 mr-4">
-            <Image src="/images/close.svg" height="24" width="24" alt="close icon" />
+            <Svg src="/images/close.svg" />
           </div>
         </Link>
       </div>
