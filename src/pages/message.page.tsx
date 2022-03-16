@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import React, { FunctionComponent } from 'react';
 
 import Layout from '../components/layout/Layout';
@@ -6,9 +6,13 @@ import Messages from '../components/messages/Messages';
 import { getConversation } from '../services/conversationService';
 import { getMessages } from '../services/messageService';
 import { getUser } from '../services/userService';
+import { Message } from '../types/message';
 import { isConversationSender } from '../utils/conversationUtils';
 
-export const getServerSideProps = async ({query}: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<{
+  messages: Message[],
+  profile: string
+}> = async ({query}: GetServerSidePropsContext) => {
   const {senderId, conversationId} = query as Record<string, string>;
   if(!senderId ||!conversationId) {
     return {
@@ -18,18 +22,19 @@ export const getServerSideProps = async ({query}: GetServerSidePropsContext) => 
   try{
     const conversation = await (await getConversation(conversationId)).shift();
     const user =  await (await getUser(senderId)).shift();
-    const messages = await getMessages(conversationId);
+    const messages = await (await getMessages(conversationId)).sort((a, b) => a.timestamp - b.timestamp);
     if(!conversation || !user || !messages ) {
       throw Error;
     }
+    const profile = isConversationSender(conversation, senderId) ? conversation.recipientNickname : conversation.senderNickname;
     return {
       props: {
-        messages: messages?.sort((a, b) => a.timestamp - b.timestamp) ?? [],
-        profile: isConversationSender(conversation, senderId) ? conversation.recipientNickname : conversation.senderNickname
+        messages,
+        profile
       },
     }
   } catch(error) {
-    console.error({error});
+    console.log({error});
     return {
       notFound: true,
     };

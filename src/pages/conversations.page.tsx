@@ -1,11 +1,14 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import React, { FunctionComponent } from 'react';
 
 import Conversation from '../components/conversation/Conversation';
 import Layout from '../components/layout/Layout';
 import { getConversations } from '../services/conversationService';
+import { Conversation as ConversationType } from '../types/conversation';
 
-export const getServerSideProps = async ({query}: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<{
+  conversations: ConversationType[]
+}> = async ({query}: GetServerSidePropsContext) => {
   const {senderId} = query;
   if(!senderId) {
     return {
@@ -14,7 +17,7 @@ export const getServerSideProps = async ({query}: GetServerSidePropsContext) => 
   }
   const conversations = await getConversations(senderId as string);
   return {
-    props: {conversations: conversations?.sort((a, b) => a.lastMessageTimestamp - b.lastMessageTimestamp) ?? []},
+    props: {conversations: conversations?.sort((a, b) => a.lastMessageTimestamp - b.lastMessageTimestamp)},
   }
 }
 const ConversationPage: FunctionComponent<
