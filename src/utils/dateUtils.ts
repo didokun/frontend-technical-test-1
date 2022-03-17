@@ -15,7 +15,7 @@ export const timestampToDateFormat = (timestamp: number) => {
 }
 
 export const timeSince = (date: number) => {
-  const secondsAgo = Math.floor((Date.now()) / 1000 - date);
+  const secondsAgo = getCurrentTimestamps() - date
   const minute = 60;
   const hour = minute * 60;
   const day = hour*24;
@@ -30,3 +30,5 @@ export const timeSince = (date: number) => {
   }
   return timestampToDateFormat(date);
 }
+
+export const getCurrentTimestamps = () => Math.floor(Date.now() / 1000);

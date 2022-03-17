@@ -7,11 +7,12 @@ import React from 'react';
 import Conversations, {getServerSideProps} from '../pages/conversations.page';
 import { Conversation } from '../types/conversation';
 import { isConversationSender } from '../utils/conversationUtils';
+import { getCurrentTimestamps } from '../utils/dateUtils';
 import { mockFetch, mockNextUseRouter } from '../utils/testUtils';
 
 
 describe('Conversations', () => {
-  const now = Math.floor(Date.now() / 1000);
+  const now = getCurrentTimestamps();
   const query = { senderId: "1" };
   const conversations: Conversation[] = [
     {id:1, recipientId: 2, senderId: 1, recipientNickname: 'Tata', senderNickname: 'Toto', lastMessageTimestamp: now},

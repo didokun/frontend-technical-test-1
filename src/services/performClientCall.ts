@@ -14,7 +14,13 @@ export const performClientCall = async<Data> ({url, method = 'GET', params = {},
   apiUrl.search = new URLSearchParams(params).toString();
   const response = {data: undefined, error: undefined};
   try {
-  const apiResponse = await fetch(apiUrl.toString(), {method, ...(data && {body: JSON.stringify(data)})});
+  const apiResponse = await fetch(apiUrl.toString(), {
+    method, 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    ...(data && {body: JSON.stringify(data)})});
   if(apiResponse.ok) {
     response.data = await apiResponse.json();
   } else {

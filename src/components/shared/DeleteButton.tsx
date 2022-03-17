@@ -24,8 +24,8 @@ const DeleteButton = <T extends object>({apiCallback, iconSize, successCallback,
       agreeButtonTitle='Yes'
       refuseButtonTitle='No'
       agreeAction={async () => {
-        const {error} = await apiCallback();
-        if(!error) {
+        const {error, data} = await apiCallback();
+        if(!error && data) {
           setAlert({open: true, message: 'Deleted with success !', type: 'success'});
           successCallback();
         } else {

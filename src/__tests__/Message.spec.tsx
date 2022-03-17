@@ -7,10 +7,11 @@ import React from 'react';
 import Message, {getServerSideProps} from '../pages/message.page';
 import { Conversation } from '../types/conversation';
 import { Message as MessageType } from '../types/message';
+import { getCurrentTimestamps } from '../utils/dateUtils';
 import { mockFetch, mockNextUseRouter } from '../utils/testUtils';
 
 describe('Message', () => {
-  const now = Math.floor(Date.now() / 1000);
+  const now = getCurrentTimestamps();
   const messages: MessageType[] = [
     {id: 2, conversationId: 1, timestamp: now, authorId: 1, body: "Bonjour c'est le second message de la première conversation"},
     {id: 3, conversationId: 1, timestamp: now-60*4, authorId: 2, body: "Bonjour c'est le troisième message de la première conversation"}

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "start-server": "json-server --watch src/server/db.json --routes src/server/routes.json --middlewares src/server/middleware/conversations.js --port 3005",
-    "test": "DOTENV_CONFIG_PATH=.env.local jest --coverage --watch",
+    "test": "DOTENV_CONFIG_PATH=.env.local jest --coverage",
     "lint": "npm run lint:ts && npm run lint:js",
     "lint:ts": "tsc",
     "lint:js": "eslint . --max-warnings=0 --ext .js,.ts,.tsx --cache --cache-location=node_modules/.cache/",
