@@ -45,11 +45,6 @@ const ChatForm: VoidFunctionComponent = () => {
           onKeyDown={(e) => e.key ==='Enter' ? submitMessage(): null}
         />
         <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
-          <button type="button" className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-            <span className='h-5 w-5'>
-            <Svg src="/images/attachment.svg"/>
-            </span>
-          </button>
           <button 
             type="button" 
             className={
@@ -59,6 +54,7 @@ const ChatForm: VoidFunctionComponent = () => {
               ])}
             onClick={() => submitMessage()}
             disabled={!messageText.length}
+            aria-label="Send message"
           >
             <Svg src="/images/send.svg" />
           </button>

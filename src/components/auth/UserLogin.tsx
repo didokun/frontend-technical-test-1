@@ -18,7 +18,7 @@ const UserLogin: VoidFunctionComponent<UserLoginProps> = ({user}) => {
             <Image className="w-10 sm:w-16 h-10 sm:h-16 rounded-full z-1" src="/images/profile.jpg" height="32" width="32" alt="Profile Picture" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium truncate">
+            <p className="text-sm font-medium truncate leading-6" aria-label={user.nickname}>
               {user.nickname}
             </p>
           </div>

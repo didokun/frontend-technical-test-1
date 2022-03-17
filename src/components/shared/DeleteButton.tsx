@@ -39,7 +39,8 @@ const DeleteButton = <T extends object>({apiCallback, iconSize, successCallback,
       type="button"
       className={buttonClassName}
       style={{width: `${iconSize+10}px`, height: `${iconSize+10}px`}}
-      onClick={() => setModalOpen(true)}>
+      onClick={() => setModalOpen(true)}
+      aria-label="Delete item">
         <span style={{width: `${iconSize}px`, height: `${iconSize}px`}}>
         <Svg src="/images/delete.svg" />
       </span>
