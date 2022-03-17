@@ -69,3 +69,23 @@ If you are out of ideas, here are some thoughts :
 - Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
 
 - We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+
+#Realization
+## ESLINT
+In order to facilitate the life of the developers, not to have changes on git only at the level of indentation or style of code and to follow the best recommendations during phase of development, it is necessary to see very important to use a linter.
+### Check linter
+Pour tester le linter il faut lancer la commande suivante
+``` $ npm run lint```
+### Fix lint bug automatically
+To fix linter bugs automatically, run the following command
+```$ npm run prettify```
+
+## Conventional Commits
+The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages. 
+The commit message should be structured as follows:
+
+`<type>[optional scope]: <description>``
+- ***fix***: a commit of the type fix patches a bug in your codebase (this correlates with PATCH in Semantic Versioning).
+- ***feat***: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in Semantic Versioning).
+- BREAKING CHANGE: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change (correlating with MAJOR in Semantic Versioning). A BREAKING CHANGE can be part of commits of any type.
+- types other than fix: and feat: are allowed, for example @commitlint/config-conventional (based on the the Angular convention) recommends **build:, chore:, ci:, docs:, style:, refactor:, perf:, test:**, and others.

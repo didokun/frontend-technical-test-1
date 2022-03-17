@@ -44,9 +44,4 @@ describe('Message', () => {
       expect(screen.getByText(new RegExp(message.body, "i"))).toBeInTheDocument();
     })
   });
-  // it('should display time ago', () => {
-  //   render(<Message messages={messages} profile={profile} />);
-  //   expect(screen.getByText(/minutes ago/)).toBeInTheDocument();
-  //   expect(screen.getByText(/seconds ago/)).toBeInTheDocument();
-  // });
 });
