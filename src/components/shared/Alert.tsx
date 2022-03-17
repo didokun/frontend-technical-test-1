@@ -32,9 +32,9 @@ const Alert: VoidFunctionComponent<AlertProps> = ({open, message, type, interval
     return <></>
   }
   return (<>
-    <div className={"flex max-w-sm mb-4 fixed top-2 right-2 z-50 text-white rounded shadow"} style={{backgroundColor: bgColor[type]}}>
+    <div className={"flex max-w-sm mb-4 fixed top-20 right-2 z-50 text-white rounded shadow"} style={{backgroundColor: bgColor[type]}}>
       <div className={"w-16"}>
-        <div className="p-4 h-20 w-20 fill-current">
+        <div className="p-4 h-10 w-10 fill-current">
           <Svg src={`/images/${type}.svg`}/>
         </div>
       </div>

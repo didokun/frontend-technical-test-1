@@ -31,7 +31,9 @@ const ProfileInformation: VoidFunctionComponent<ProfileInformationProps> = ({pro
       <div className="flex items-center space-x-2">
         <Link href={{pathname: '/conversations', query: { senderId }}} passHref>
           <div className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none cursor-pointer sm:mr-0 mr-4">
-            <Svg src="/images/close.svg" />
+            <span className="h-6 w-6">
+              <Svg src="/images/close.svg" />
+            </span>
           </div>
         </Link>
       </div>

@@ -7,7 +7,9 @@ export type NetworkConfig = {
   data?: Record<string, unknown>;
 }
 
-export const performClientCall = async<Data> ({url, method = 'GET', params = {}, data}: NetworkConfig): Promise<{data:Data, error: Error}> => {
+export type ApiResponse<T> = {data:T, error: Error}
+
+export const performClientCall = async<Data> ({url, method = 'GET', params = {}, data}: NetworkConfig): Promise<ApiResponse<Data>> => {
   const apiUrl = new URL(url, process.env.NEXT_PUBLIC_BASE_API)
   apiUrl.search = new URLSearchParams(params).toString();
   const response = {data: undefined, error: undefined};

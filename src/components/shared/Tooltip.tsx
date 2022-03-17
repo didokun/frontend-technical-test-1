@@ -7,7 +7,7 @@ type TooltipProps = {
 }
 
 const Tooltip: FunctionComponent<TooltipProps> = ({innerText, children}) => {
-  return (<div className="group relative cursor-pointer z-50">
+  return (<div className="group relative cursor-pointer">
     <div className="hidden group-hover:block absolute my-1 mx-auto w-max -top-8 inset-x-0">
       <div className="bg-orange-500 text-white text-xs rounded  py-1 px-4 right-0 bottom-full">
         {innerText}

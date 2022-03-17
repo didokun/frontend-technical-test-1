@@ -1,4 +1,4 @@
-import React, { useMemo, VoidFunctionComponent } from 'react';
+import React, { Dispatch, SetStateAction, useMemo, useState, VoidFunctionComponent } from 'react';
 
 import { Message } from '../../types/message';
 import ChatForm from './ChatForm';
@@ -10,11 +10,18 @@ type MessagesProps = {
   profile: string;
 }
 
+export const MessageContext = React.createContext<{
+  messages: Message[];
+  setMessages: Dispatch<SetStateAction<Message[]>>;
+}>({} as never);
+
 const Messages: VoidFunctionComponent<MessagesProps> = ({messages, profile}) => {
+  const [messagesItems, setMessages] = useState<Message[]>(messages);
   const messagesList = useMemo(() =>  
-    messages.map(message => <ChatMessage key={message.id} message={message} />), [messages]);
+  messagesItems.map(message => <ChatMessage key={message.id} message={message} />), [messagesItems]);
   return (
   <>
+  <MessageContext.Provider value={{messages: messagesItems, setMessages}}>
   <div>
     <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-full min-h-[400px]">
       <ProfileInformation profile={profile} />
@@ -26,6 +33,7 @@ const Messages: VoidFunctionComponent<MessagesProps> = ({messages, profile}) => 
       </div>
     </div>
   </div>
+  </MessageContext.Provider>
 </>
 )
 }
